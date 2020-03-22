@@ -13,7 +13,7 @@ def signaltonoise(a, axis=0, ddof=0):
 img = [0] * 50
 i = 0
 
-for image_path in glob.glob("im_base_original\Gogh\\*.jpg"):
+for image_path in glob.glob("im_base_original\Hockney\\*.jpg"):
     im = imageio.imread(image_path)
     img[i] = im
     i += 1
