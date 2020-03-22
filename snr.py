@@ -12,6 +12,7 @@ def signaltonoise(a, axis=0, ddof=0):
 # Tworzenie wektora z obrazami
 img = [0] * 50
 i = 0
+
 for image_path in glob.glob("im_base_original\Gogh\\*.jpg"):
     im = imageio.imread(image_path)
     img[i] = im
@@ -22,3 +23,5 @@ snr = [0] * 50
 for x in range(50):
     snr[x] = signaltonoise(img[x] , axis=None )
     print(x+1, 'SNR =' , snr[x])
+avg = np.average(snr)
+print('Average SNR = ' , avg)
