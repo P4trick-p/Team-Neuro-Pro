@@ -3,6 +3,11 @@ import glob
 import imageio
 import time # for debugging
 
+#### Debugger ####
+#print()
+#time.sleep()
+##################
+
 def signaltonoise(a, axis=0, ddof=0): # deprecated scipy function
     a = np.asanyarray(a)
     m = a.mean(axis)
@@ -13,27 +18,30 @@ rows, cols = (3, 50)
 arr = [[0]*cols]*rows
 #art = ( glob.glob("base_original\Beksinski\\*.jpg") , glob.glob("base_original\Hockney\\*.jpg") , glob.glob("base_original\Gogh\\*.jpg"))
 art = ( glob.glob("base_original\Beksinski\\*.jpg") , glob.glob("base_original\Hockney\\*.jpg") , glob.glob("base_original\Gogh\\*.jpg"))
-
+arty = ('Beksinski','Hockney','Gogh')
 for x in range(rows):
-    i = 0
-    for image_path in art[x]:           # Coś tu nie gra
-        im = imageio.imread(image_path)
-        arr[x][i] = im
-        i += 1
-    x += 1
-x=0
-i=0
-# Liczenie SNR (Signal to Noise Ratio) // Jednostka?
+    i=0
+    #print(arty[x])
+    for image_path in art[x]:# Coś tu nie gra
+        #print(image_path)
+        arr[x][i] = imageio.imread(image_path)
+
+# Liczenie SNR (Signal to Noise Ratio) //
 avg = [0]*cols
 SNR = [[0]*cols]*rows
+
+x = 0
 for x in range(rows):
+    i = 0
     for i in range(cols):
         img = arr[x][i]
-        SNR[x][i] = signaltonoise(img , axis=None )
+        #print(img)
+        #time.sleep(100)
+        SNR[x][i] = signaltonoise(img)
         print(i+1, 'SNR =' , SNR[x][i])
-        i += 1
+
     snr = SNR[x]
-    avg[x] = np.average(snr)
+    avg[x] = np.mean(snr)
     print('Average SNR = ' , avg[x])
-    time.sleep(2)
-    x += 1
+print(SNR[2][49])
+time.sleep(100)

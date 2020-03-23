@@ -12,13 +12,12 @@ def signaltonoise(a, axis=0, ddof=0):
 # Tworzenie wektora z obrazami
 img = [0] * 50
 i = 0
-
 for image_path in glob.glob("base_original\Hockney\\*.jpg"):
     im = imageio.imread(image_path)
     img[i] = im
     i += 1
 
-# Liczenie SNR (Signal to Noise Ratio) // Jednostka?
+# Liczenie SNR (Signal to Noise Ratio) //
 snr = [0] * 50
 for x in range(50):
     snr[x] = signaltonoise(img[x] , axis=None )
