@@ -16,8 +16,7 @@ def signaltonoise(a, axis=0, ddof=0): # deprecated scipy function
 # Tworzenie tablicy 2D z artystami i ich obrazami
 rows, cols = (3, 50)
 arr = [[0]*cols]*rows
-#art = ( glob.glob("base_original\Beksinski\\*.jpg") , glob.glob("base_original\Hockney\\*.jpg") , glob.glob("base_original\Gogh\\*.jpg"))
-art = ( glob.glob("base_original\Beksinski\\*.jpg") , glob.glob("base_original\Hockney\\*.jpg") , glob.glob("base_original\Gogh\\*.jpg"))
+art = ( glob.glob("base\Beksinski\\*.jpg") , glob.glob("base\Hockney\\*.jpg") , glob.glob("base\Gogh\\*.jpg") )
 arty = ('Beksinski','Hockney','Gogh')
 for x in range(rows):
     i=0
