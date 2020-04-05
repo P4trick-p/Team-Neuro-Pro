@@ -10,7 +10,7 @@ def signaltonoise(a, axis=0, ddof=0): # deprecated scipy function
     sd = a.std(axis=axis, ddof=ddof)
     return np.where(sd == 0, 0, m/sd)
 
-artists = ('Beksinski','Hockney','Gogh')
+artists = ('Beksiński','Hockney','van Gogh')
 arts = ( glob.glob("base\Beksinski\\*.jpg") , glob.glob("base\Hockney\\*.jpg") , glob.glob("base\Gogh\\*.jpg") )
 i = 0
 X = 50
@@ -47,11 +47,35 @@ for I in range(3):
     i=0
     for i in range(50): #
         n[I][i] = snr[I,i] #Odwracanie macierzy
-    plt.scatter(n[I],x)
-plt.figure()
+    #plt.scatter(n[I],x)
+#plt.figure()
 N = [1,2,3]
-plt.scatter(avg,N)
+#plt.scatter(avg,N)
+#plt.show()
+
+I = 0
+fig, ax = plt.subplots()
+fig, ay = plt.subplots()
+for color in ['tab:blue', 'tab:orange', 'tab:green']:
+
+    ax.scatter(n[I], x, c=color, label=artists[I], alpha=1, edgecolors='none')
+    ay.scatter(avg[I], 1, c=color, label=artists[I], alpha=1, edgecolors='none')
+    I += 1
+ax.set_title("SnR")
+ax.set_xlabel("SNR value")
+ax.set_ylabel("Number of picture")
+ax.legend()
+ax.grid(True)
+
+ay.set_title("Average SNR")
+ay.set_xlabel("Avg. SNR")
+ay.set_ylabel("Artists")
+ay.legend()
+ay.grid(True)
 plt.show()
+
+
+
 
 I=0
 SNR = np.zeros((50,3))
@@ -60,6 +84,8 @@ for I in range(3):
     for i in range(50): # Odwracanie macierzy
         SNR[i,I] = snr[I,i]
 
+
+
 #print(n)
 #plt.plot(n[I], n[I], 'o', color='black');
-np.savetxt("art.csv", SNR, delimiter=";")
+#np.savetxt("art.csv", SNR, delimiter=";")
