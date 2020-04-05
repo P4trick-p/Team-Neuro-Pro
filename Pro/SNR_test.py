@@ -12,7 +12,12 @@ def signaltonoise(a, axis=0, ddof=0): # deprecated scipy function
 
 artists = ('Beksinski','Hockney','Gogh')
 arts = ( glob.glob("base\Beksinski\\*.jpg") , glob.glob("base\Hockney\\*.jpg") , glob.glob("base\Gogh\\*.jpg") )
-Artists = np.array([1,2,3])
+i = 0
+X = 50
+x = [0]*X
+for i in range(X):
+    x[i]= i+1
+print(x)
 # Tworzenie wektorów
 avg = [0] * 3
 img = [0] * 50
@@ -36,11 +41,25 @@ print('Hockney Average SNR = ' , avg[1])
 print('Gogh Average SNR = ' , avg[2])
 
 I=0
-SNR = np.zeros((50,3))
-
+n = [0]*3
 for I in range(3):
+    n[I] = [0]*50
     i=0
     for i in range(50): #
-        SNR[i,I] = snr[I,i] #Odwracanie macierzy
-plt.scatter()
+        n[I][i] = snr[I,i] #Odwracanie macierzy
+    plt.scatter(n[I],x)
+plt.figure()
+N = [1,2,3]
+plt.scatter(avg,N)
+plt.show()
+
+I=0
+SNR = np.zeros((50,3))
+for I in range(3):
+    i=0
+    for i in range(50): # Odwracanie macierzy
+        SNR[i,I] = snr[I,i]
+
+#print(n)
+#plt.plot(n[I], n[I], 'o', color='black');
 np.savetxt("art.csv", SNR, delimiter=";")
