@@ -47,11 +47,8 @@ for I in range(3):
     i=0
     for i in range(50): #
         n[I][i] = snr[I,i] #Odwracanie macierzy
-    #plt.scatter(n[I],x)
-#plt.figure()
+
 N = [1,2,3]
-#plt.scatter(avg,N)
-#plt.show()
 
 I = 0
 fig, ax = plt.subplots()
@@ -74,17 +71,12 @@ ay.legend()
 ay.grid(True)
 plt.show()
 
-
-
-
 I=0
 SNR = np.zeros((50,3))
 for I in range(3):
     i=0
     for i in range(50): # Odwracanie macierzy
         SNR[i,I] = snr[I,i]
-
-
 
 #print(n)
 #plt.plot(n[I], n[I], 'o', color='black');
