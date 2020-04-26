@@ -11,7 +11,7 @@ arts = ( glob.glob("base\Beksinski\\*.jpg") , glob.glob("base\Hockney\\*.jpg") ,
 
 color = ('b','g','r')
 
-hist = [0]* 50
+
 X = 0
 axs = [0] * 3
 for X in range(3):
@@ -20,6 +20,7 @@ i = 0
 I = 0
 for X in range(3):
     i = 0
+    hist = [0] * 50
     for image_path in arts[X]:
         im = imageio.imread(image_path) #Wczytywanie obrazów z katalogu
         images[i] = im
