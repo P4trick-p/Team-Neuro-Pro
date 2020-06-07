@@ -17,24 +17,19 @@ X = 50
 x = [0]*X
 for i in range(X):
     x[i]= i+1
-print(x)
-# Tworzenie wektorów
 avg = [0] * 3
 img = [0] * 50
 snr = np.zeros((3,50))
 for I in range(3):
-    #print(artists[I])
     i = 0
     for image_path in arts[I]:
-        im = imageio.imread(image_path) #Wczytywanie obrazów z katalogu
+        im = imageio.imread(image_path)
         img[i] = im
         i += 1
     i=0
     for i in range(50): # Liczenie SNR (Signal to Noise Ratio) //
         snr[I,i] = signaltonoise(img[i] , axis=None )
-        #print(i+1, 'SNR =' , snr[I,i])
     avg[I] = np.average(snr[I])
-    #print('Average SNR = ' , avg[I])
 
 print('Beksinski Average SNR = ' , avg[0])
 print('Hockney Average SNR = ' , avg[1])
@@ -78,6 +73,5 @@ for I in range(3):
     for i in range(50): # Odwracanie macierzy
         SNR[i,I] = snr[I,i]
 
-#print(n)
 #plt.plot(n[I], n[I], 'o', color='black');
 #np.savetxt("art.csv", SNR, delimiter=";")
